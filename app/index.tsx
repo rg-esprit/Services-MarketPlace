@@ -14,7 +14,7 @@ export default function Index() {
         Welcome to Services MarketPlace APP!
       </Text>
       <Link href="/Home">Go Home</Link>
-      <Link href="/Sign-in">Sign-in</Link>
+      <Link href="/(auth)/Letsyouin">Sign-in</Link>
     </View>
   );
 }

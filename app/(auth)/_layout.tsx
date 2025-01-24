@@ -4,7 +4,15 @@ import { Tabs } from "expo-router";
 
 const AuthLayout = () => {
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: {
+          display: "none",
+        },
+      }}
+    >
+      <Tabs.Screen name="Letsyouin" />
       <Tabs.Screen name="Sign-in" />
       <Tabs.Screen name="Sign-up" />
     </Tabs>
