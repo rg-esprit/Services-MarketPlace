@@ -8,6 +8,7 @@ export default function Index() {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: "#fff",
       }}
     >
       <Text className="text-primary font-urbold text-heading5">

@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./app/**/*.{js,jsx,ts,tsx}"],
+  content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
@@ -67,7 +67,7 @@ module.exports = {
           yellow: "#FFFFEB",
         },
         transparent: {
-          purple: "#7121DF",
+          purple: "rgba(114, 16, 255, 0.08)",
           blue: "#3B85F7",
           orange: "#FF9B00",
           yellow: "#FAC515",

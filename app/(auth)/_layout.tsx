@@ -6,13 +6,13 @@ const AuthLayout = () => {
   return (
     <Tabs
       screenOptions={{
-        headerShown: false,
         tabBarStyle: {
           display: "none",
         },
+        headerShown: false,
       }}
     >
-      <Tabs.Screen name="Letsyouin" />
+      <Tabs.Screen name="Letsyouin" options={{ headerShown: false }} />
       <Tabs.Screen name="Sign-in" />
       <Tabs.Screen name="Sign-up" />
     </Tabs>

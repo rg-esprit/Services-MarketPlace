@@ -1,6 +1,8 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableHighlight } from "react-native";
 import React from "react";
 import { Image } from "expo-image";
+import { router, Link } from "expo-router";
+import Primarybutton from "../../components/buttons/primarybutton";
 const letsyouinimg = require("../../assets/images/sign/letsyouin.png");
 const facebookimg = require("../../assets/icons/facebook-icon.png");
 const googleimg = require("../../assets/icons/google-icon.png");
@@ -31,7 +33,7 @@ const ContinueWith = ({ title, img }: ContinueWithProps) => {
 
 const Letsyouin = () => {
   return (
-    <View className="flex flex-col justify-center items-center px-6 py-12">
+    <View className="flex-1 flex flex-col justify-around items-center px-6 py-12 bg-white">
       <Image
         source={letsyouinimg}
         style={{ width: 380, height: 200 }}
@@ -53,6 +55,24 @@ const Letsyouin = () => {
           </Text>
           <View className="flex-1 h-[1px] bg-gray-300" />
         </View>
+
+        <View className="flex flex-row justify-center items-center">
+          <Primarybutton
+            title={"Sign in with Email"}
+            handlePress={() => router.push("/(auth)/Sign-in")}
+          />
+        </View>
+      </View>
+      <View className="flex flex-row justify-center items-center">
+        <Text className="text-gray-500 text-bodyMd font-urregular">
+          Don’t have an account?{" "}
+        </Text>
+        <Link
+          href="/(auth)/Sign-up"
+          className="text-primary text-bodyMd font-semibold"
+        >
+          Sign up
+        </Link>
       </View>
     </View>
   );
