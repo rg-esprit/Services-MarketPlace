@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Primarybutton from "@/components/buttons/primarybutton";
 import Icons from "../../constants/icons";
 import { Image } from "expo-image";
-import InputComponent from "@/components/input";
+import InputField from "@/components/input";
 import { Link } from "expo-router";
 
 const facebookimg = require("../../assets/icons/facebook-icon.png");
@@ -12,6 +12,8 @@ const appleimg = require("../../assets/icons/apple-icon.png");
 
 const Signup = () => {
   const [rememberMe, setRememberMe] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
   return (
     <View className="flex-1 px-6 py-12 justify-between  bg-white ">
@@ -20,12 +22,18 @@ const Signup = () => {
       </Text>
 
       <View className="gap-6">
-        <InputComponent PlaceHolder="Email" icon={Icons.Message} />
+      <InputField
+          type="email"
+          value={email}
+          onChange={setEmail}
+          placeholder="Email"
+        />
 
-        <InputComponent
-          PlaceHolder="Password"
-          icon={Icons.Lock}
-          isPassword={true}
+        <InputField
+          type="password"
+          value={password}
+          onChange={setPassword}
+          placeholder="Password"
         />
 
         <TouchableOpacity
