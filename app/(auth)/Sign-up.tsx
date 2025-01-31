@@ -5,6 +5,7 @@ import Icons from "../../constants/icons";
 import { Image } from "expo-image";
 import InputField from "@/components/input";
 import { Link } from "expo-router";
+import { router } from "expo-router";
 
 const facebookimg = require("../../assets/icons/facebook-icon.png");
 const googleimg = require("../../assets/icons/google-icon.png");
@@ -12,8 +13,8 @@ const appleimg = require("../../assets/icons/apple-icon.png");
 
 const Signup = () => {
   const [rememberMe, setRememberMe] = useState(false);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <View className="flex-1 px-6 py-12 justify-between  bg-white ">
@@ -22,7 +23,7 @@ const Signup = () => {
       </Text>
 
       <View className="gap-6">
-      <InputField
+        <InputField
           type="email"
           value={email}
           onChange={setEmail}
@@ -46,7 +47,10 @@ const Signup = () => {
           </Text>
         </TouchableOpacity>
 
-        <Primarybutton title="Sign up" />
+        <Primarybutton
+          title="Sign up"
+          handlePress={() => router.push("/(auth)/setup")}
+        />
       </View>
 
       <View className="gap-5">

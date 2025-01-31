@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
-import { View, TextInput, Pressable } from 'react-native';
+import React, { useState } from "react";
+import { View, TextInput, Pressable } from "react-native";
 import Icons from "../constants/icons";
 import { Image } from "expo-image";
 
 // We still keep these for reference, but we'll assign them automatically now
-type InputStatus = 'default' | 'active' | 'filled';
-type InputType = 'default' | 'username' | 'email' | 'password' | 'phone' | 'normal';
+type InputStatus = "default" | "active" | "filled";
+type InputType =
+  | "default"
+  | "username"
+  | "email"
+  | "password"
+  | "address"
+  | "phone"
+  | "DOB"
+  | "Email-right"
+  | "normal";
 
 interface InputFieldProps {
   type?: InputType;
@@ -24,14 +33,14 @@ interface InputFieldProps {
 }
 
 export default function InputField({
-  type = 'default',
-  value = '',
+  type = "default",
+  value = "",
   onChange,
-  placeholder = '',
+  placeholder = "",
   showPasswordToggle = true,
-  className = '',
-  /** 
-   * If you really want to override the auto-status logic, 
+  className = "",
+  /**
+   * If you really want to override the auto-status logic,
    * pass forcedStatus, otherwise we'll do the focus/fill detection.
    */
   forcedStatus,
@@ -48,87 +57,111 @@ export default function InputField({
   if (forcedStatus) {
     derivedStatus = forcedStatus;
   } else if (isFocused) {
-    derivedStatus = 'active';
+    derivedStatus = "active";
   } else if (hasValue) {
-    derivedStatus = 'filled';
+    derivedStatus = "filled";
   } else {
-    derivedStatus = 'default';
+    derivedStatus = "default";
   }
 
   // Container class names (Tailwind via nativewind)
   const baseContainerClasses =
-    'flex-row items-center w-[380px] h-14 px-5 rounded-xl gap-3';
+    "flex-row items-center w-[380px] h-14 px-5 rounded-xl gap-3";
 
   // Status-based background/border
   const statusClasses: Record<InputStatus, string> = {
-    default: 'bg-[#f9f9f9]',
-    active: 'bg-[#7210ff]/10 border border-[#7210ff]',
-    filled: 'bg-[#f9f9f9]',
+    default: "bg-[#f9f9f9]",
+    active: "bg-[#7210ff]/10 border border-[#7210ff]",
+    filled: "bg-[#f9f9f9]",
   };
 
   const containerClassName = [
     baseContainerClasses,
     statusClasses[derivedStatus],
     className,
-  ].join(' ');
+  ].join(" ");
 
   // Status-based text color & weight
   const labelStatusClasses: Record<InputStatus, string> = {
-    default: 'text-[#9e9e9e] font-normal',
-    active: 'text-[#212121] font-semibold',
-    filled: 'text-[#212121] font-semibold',
+    default: "text-[#9e9e9e] font-normal",
+    active: "text-[#212121] font-semibold",
+    filled: "text-[#212121] font-semibold",
   };
 
   const labelClassName = [
-    'text-sm leading-tight tracking-tight font-[Urbanist] flex-1',
+    "text-sm leading-tight tracking-tight font-urmedium flex-1",
     labelStatusClasses[derivedStatus],
-  ].join(' ');
+  ].join(" ");
 
   // Icon color based on status
-  const iconColor = derivedStatus === 'default' ? '#9e9e9e' : derivedStatus === 'active' ? '#7121DF' : '#212121';
+  const iconColor =
+    derivedStatus === "default"
+      ? "#9e9e9e"
+      : derivedStatus === "active"
+      ? "#7121DF"
+      : "#212121";
 
   // Render left icon if needed
   const renderLeftIcon = () => {
     switch (type) {
-      // case 'phone':
-      //   return (
-      //     <View className="flex-row items-center gap-2">
-      //       <Image
-      //         source={{ uri: icons.flag }}
-      //         style={{ width: 20, height: 20, resizeMode: 'contain' }}
-      //       />
-      //       <Image
-      //         source={{ uri: icons.arrowDown }}
-      //         style={{ width: 16, height: 16, resizeMode: 'contain' }}
-      //       />
-      //     </View>
-      //   );
-      case 'username':
+      case "phone":
+        return (
+          <Image
+            source={Icons.Call}
+            style={{
+              width: 20,
+              height: 20,
+              resizeMode: "contain",
+              tintColor: iconColor,
+            }}
+          />
+        );
+      case "username":
         return (
           <Image
             source={Icons.Profile}
-            style={{ width: 13, height: 17, resizeMode: 'contain', tintColor: iconColor }}
+            style={{
+              width: 13,
+              height: 17,
+              resizeMode: "contain",
+              tintColor: iconColor,
+            }}
           />
         );
-      case 'email':
+      case "email":
         return (
           <Image
             source={Icons.Message}
-            style={{ width: 17, height: 15, resizeMode: 'contain', tintColor: iconColor }}
+            style={{
+              width: 17,
+              height: 15,
+              resizeMode: "contain",
+              tintColor: iconColor,
+            }}
           />
         );
-      case 'password':
+      case "password":
         return (
           <Image
             source={Icons.Lock}
-            style={{ width: 14, height: 17, resizeMode: 'contain', tintColor: iconColor }}
+            style={{
+              width: 14,
+              height: 17,
+              resizeMode: "contain",
+              tintColor: iconColor,
+            }}
           />
         );
-      case 'normal':
+      case "normal":
         return (
           <Image
             source={Icons.Profile}
-            style={{ width: 13, height: 17, resizeMode: 'contain', tintColor: iconColor }}
+            style={{
+              width: 13,
+              height: 17,
+              resizeMode: "contain",
+              tintColor: iconColor,
+            }}
           />
         );
       default:
@@ -138,21 +171,70 @@ export default function InputField({
 
   // Render right icon if needed
   const renderRightIcon = () => {
-    if (type === 'password' && showPasswordToggle) {
+    if (type === "password" && showPasswordToggle) {
       return (
         <Pressable onPress={() => setShowPassword(!showPassword)}>
           <Image
-            source={Icons.Hide }
-            style={{ width: 17, height: 14, resizeMode: 'contain', tintColor: iconColor }}
+            source={Icons.Hide}
+            style={{
+              width: 17,
+              height: 14,
+              resizeMode: "contain",
+              tintColor: iconColor,
+            }}
           />
         </Pressable>
       );
     }
-    if (type === 'normal') {
+    if (type === "normal") {
       return (
         <Image
-          source={Icons.ArrowDown2 }
-          style={{ width: 16, height: 16, resizeMode: 'contain', tintColor: iconColor }}
+          source={Icons.ArrowDown2}
+          style={{
+            width: 16,
+            height: 16,
+            resizeMode: "contain",
+            tintColor: iconColor,
+          }}
+        />
+      );
+    }
+    if (type === "DOB") {
+      return (
+        <Image
+          source={Icons.Calendar}
+          style={{
+            width: 16,
+            height: 16,
+            resizeMode: "contain",
+            tintColor: iconColor,
+          }}
+        />
+      );
+    }
+    if (type === "address") {
+      return (
+        <Image
+          source={Icons.Location}
+          style={{
+            width: 16,
+            height: 16,
+            resizeMode: "contain",
+            tintColor: iconColor,
+          }}
+        />
+      );
+    }
+    if (type === "Email-right") {
+      return (
+        <Image
+          source={Icons.MessageCurved}
+          style={{
+            width: 17,
+            height: 15,
+            resizeMode: "contain",
+            tintColor: iconColor,
+          }}
         />
       );
     }
@@ -165,11 +247,11 @@ export default function InputField({
   };
 
   // For password fields, if not showing password, secureTextEntry = true
-  const secureEntry = type === 'password' && !showPassword;
+  const secureEntry = type === "password" && !showPassword;
 
   // Placeholder logic: only show placeholder if we are in "default" status
   // (meaning no focus and empty).
-  const showPlaceholder = derivedStatus === 'default';
+  const showPlaceholder = derivedStatus === "default";
 
   return (
     <View className={containerClassName}>
@@ -179,7 +261,7 @@ export default function InputField({
       {/* Actual text input */}
       <TextInput
         className={labelClassName}
-        placeholder={showPlaceholder ? placeholder : ''}
+        placeholder={showPlaceholder ? placeholder : ""}
         placeholderTextColor="#9e9e9e"
         value={value}
         onFocus={() => setIsFocused(true)}
@@ -187,9 +269,9 @@ export default function InputField({
         onChangeText={handleTextChange}
         secureTextEntry={secureEntry}
         style={{
-          // "active"/"filled": text color is #212121, 
+          // "active"/"filled": text color is #212121,
           // "default": text color is #9e9e9e
-          color: derivedStatus === 'default' ? '#9e9e9e' : '#212121',
+          color: derivedStatus === "default" ? "#9e9e9e" : "#212121",
         }}
       />
 
