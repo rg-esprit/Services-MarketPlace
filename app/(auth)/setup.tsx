@@ -5,6 +5,7 @@ import Icons from "@/constants/icons";
 import Avatar from "@/components/Avatar";
 import InputField from "@/components/input";
 import Primarybutton from "@/components/buttons/primarybutton";
+import { router } from "expo-router";
 
 const Setup = () => {
   const [ImageUri, setImageUri] = useState(
@@ -23,7 +24,10 @@ const Setup = () => {
           <InputField placeholder="Address" type="address" />
         </View>
       </View>
-      <Primarybutton title="Continue" />
+      <Primarybutton
+        title="Continue"
+        handlePress={() => router.push("/(tabs)/HomeScreen")}
+      />
     </View>
   );
 };
