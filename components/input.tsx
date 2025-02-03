@@ -111,9 +111,9 @@ export default function InputField({
             style={{
               width: 20,
               height: 20,
-              resizeMode: "contain",
               tintColor: iconColor,
             }}
+            contentFit="contain"
           />
         );
       case "username":
@@ -123,9 +123,9 @@ export default function InputField({
             style={{
               width: 13,
               height: 17,
-              resizeMode: "contain",
               tintColor: iconColor,
             }}
+            contentFit="contain"
           />
         );
       case "email":
@@ -135,9 +135,9 @@ export default function InputField({
             style={{
               width: 17,
               height: 15,
-              resizeMode: "contain",
               tintColor: iconColor,
             }}
+            contentFit="contain"
           />
         );
       case "password":
@@ -147,9 +147,9 @@ export default function InputField({
             style={{
               width: 14,
               height: 17,
-              resizeMode: "contain",
               tintColor: iconColor,
             }}
+            contentFit="contain"
           />
         );
       case "normal":
@@ -159,9 +159,9 @@ export default function InputField({
             style={{
               width: 13,
               height: 17,
-              resizeMode: "contain",
               tintColor: iconColor,
             }}
+            contentFit="contain"
           />
         );
       default:
@@ -179,9 +179,9 @@ export default function InputField({
             style={{
               width: 17,
               height: 14,
-              resizeMode: "contain",
               tintColor: iconColor,
             }}
+            contentFit="contain"
           />
         </Pressable>
       );
@@ -193,9 +193,9 @@ export default function InputField({
           style={{
             width: 16,
             height: 16,
-            resizeMode: "contain",
             tintColor: iconColor,
           }}
+          contentFit="contain"
         />
       );
     }
@@ -206,9 +206,9 @@ export default function InputField({
           style={{
             width: 16,
             height: 16,
-            resizeMode: "contain",
             tintColor: iconColor,
           }}
+          contentFit="contain"
         />
       );
     }
@@ -219,9 +219,9 @@ export default function InputField({
           style={{
             width: 16,
             height: 16,
-            resizeMode: "contain",
             tintColor: iconColor,
           }}
+          contentFit="contain"
         />
       );
     }
@@ -232,9 +232,9 @@ export default function InputField({
           style={{
             width: 17,
             height: 15,
-            resizeMode: "contain",
             tintColor: iconColor,
           }}
+          contentFit="contain"
         />
       );
     }

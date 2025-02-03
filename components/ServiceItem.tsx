@@ -10,8 +10,11 @@ interface ServiceItemProps {
 export default function ServiceItem({ name, icon, color }: ServiceItemProps) {
   return (
     <TouchableOpacity className="items-center gap-3">
-      <View className={`p-4 rounded-full ${color}`}>
-        <Ionicons name={icon} size={28} color="#424242" />
+      <View
+        style={{ backgroundColor: `${color}1A` }}
+        className="p-4 rounded-full"
+      >
+        <Ionicons name={icon} size={28} color={color} />
       </View>
       <Text className="text-[#424242] text-base font-bold">{name}</Text>
     </TouchableOpacity>

@@ -21,48 +21,24 @@ export default function HomeScreen() {
           </View>
 
           <View className="w-full flex-row justify-between mb-4">
-            <ServiceItem
-              name="Cleaning"
-              icon="home-outline"
-              color="bg-[#7210ff]/10"
-            />
+            <ServiceItem name="Cleaning" icon="home-outline" color="#7210ff" />
             <ServiceItem
               name="Repairing"
               icon="construct-outline"
-              color="bg-[#ff9800]/10"
+              color="#ff9800"
             />
-            <ServiceItem
-              name="Painting"
-              icon="brush-outline"
-              color="bg-[#335ef7]/10"
-            />
-            <ServiceItem
-              name="Laundry"
-              icon="shirt-outline"
-              color="bg-yellow-400/10"
-            />
+            <ServiceItem name="Painting" icon="brush-outline" color="#335ef7" />
+            <ServiceItem name="Laundry" icon="shirt-outline" color="#facc15" />
           </View>
 
           <View className="w-full flex-row justify-between">
-            <ServiceItem
-              name="Appliance"
-              icon="tv-outline"
-              color="bg-[#f75555]/10"
-            />
-            <ServiceItem
-              name="Plumbing"
-              icon="water-outline"
-              color="bg-[#4caf50]/10"
-            />
-            <ServiceItem
-              name="Shifting"
-              icon="car-outline"
-              color="bg-[#00bcd4]/10"
-            />
+            <ServiceItem name="Appliance" icon="tv-outline" color="#f75555" />
+            <ServiceItem name="Plumbing" icon="water-outline" color="#4caf50" />
+            <ServiceItem name="Shifting" icon="car-outline" color="#00bcd4" />
             <ServiceItem
               name="More"
               icon="ellipsis-horizontal"
-              color="bg-[#7210ff]/10"
+              color="#7210ff"
             />
           </View>
         </View>

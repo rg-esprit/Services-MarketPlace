@@ -14,7 +14,6 @@ export default function Index() {
       <Text className="text-primary font-urbold text-heading5">
         Welcome to Services MarketPlace APP!
       </Text>
-      <Link href="/Home">Go Home</Link>
       <Link href="/(auth)/Letsyouin">Sign-in</Link>
     </View>
   );
