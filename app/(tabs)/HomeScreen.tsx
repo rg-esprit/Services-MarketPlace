@@ -4,6 +4,7 @@ import SearchBar from "../../components/SearchBar";
 import ServiceItem from "../../components/ServiceItem";
 import FilterChip from "../../components/FilterChip";
 import ServiceCard from "../../components/ServiceCard";
+import { Link } from "expo-router";
 
 // Main Screen Component
 export default function HomeScreen() {
@@ -17,7 +18,12 @@ export default function HomeScreen() {
         <View className="w-full">
           <View className="w-full flex-row justify-between items-center mb-4">
             <Text className="text-[#212121] text-xl font-bold">Services</Text>
-            <Text className="text-[#7210ff] text-base font-bold">See All</Text>
+            <Link
+              href="/(tabs)/AllServicesScreen"
+              className="text-[#7210ff] text-base font-bold"
+            >
+              See All
+            </Link>
           </View>
 
           <View className="w-full flex-row justify-between mb-4">
@@ -49,7 +55,12 @@ export default function HomeScreen() {
             <Text className="text-[#212121] text-xl font-bold">
               Most Popular Services
             </Text>
-            <Text className="text-[#7210ff] text-base font-bold">See All</Text>
+            <Link
+              href="/(tabs)/AllServicesScreen"
+              className="text-[#7210ff] text-base font-bold"
+            >
+              See All
+            </Link>
           </View>
 
           <ScrollView

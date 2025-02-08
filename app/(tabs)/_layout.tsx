@@ -1,13 +1,31 @@
 // _layout.tsx
-import { Tabs } from "expo-router";
+import { Tabs, useRouter } from "expo-router";
 import { Image } from "expo-image";
 import Icons from "@/constants/icons";
+import { TouchableOpacity } from "react-native";
+
+function BackButton() {
+  const router = useRouter();
+  return (
+    <TouchableOpacity onPress={() => router.back()}>
+      <Image
+        source={Icons.ArrowLeftLightOutline}
+        style={{ width: 36, height: 36, marginLeft: 24, marginRight: 16 }}
+      />
+    </TouchableOpacity>
+  );
+}
 
 export default function Layout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
+
+        headerStyle: {
+          backgroundColor: "#fff",
+          shadowColor: "transparent",
+        },
         // Change the active/inactive text color:
         tabBarActiveTintColor: "#7210ff",
         tabBarInactiveTintColor: "#9e9e9e",
@@ -90,6 +108,15 @@ export default function Layout() {
               }}
             />
           ),
+        }}
+      />
+      <Tabs.Screen
+        name="AllServicesScreen"
+        options={{
+          href: null,
+          headerShown: true,
+          title: "All Services",
+          headerLeft: () => <BackButton />,
         }}
       />
     </Tabs>

@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 interface ServiceCardProps {
@@ -28,7 +28,9 @@ export default function ServiceCard({
       <View className="flex-1">
         <View className="flex-row justify-between items-center mb-2">
           <Text className="text-[#616161] text-xs font-medium">{provider}</Text>
-          <Ionicons name="heart-outline" size={20} color="#616161" />
+          <TouchableOpacity>
+            <Ionicons name="heart-outline" size={20} color="#616161" />
+          </TouchableOpacity>
         </View>
         <Text className="text-[#212121] text-lg font-bold mb-1">{service}</Text>
         <Text className="text-[#7210ff] text-lg font-bold mb-2">{price}</Text>
